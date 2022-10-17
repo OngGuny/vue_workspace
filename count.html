@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="kr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset=
+    "utf-8">//vue 라이브러리를 다운로드 한것.</script>
+  </head>
+  <body>
+    <div id="app">
+      <span id="counter">{{counter}}</span>
+    </div>
+    <script type="text/javascript">
+
+      const counterView = new Vue({
+        el:"#counter",
+        data: {
+          counter:1,
+        }
+      });
+      window.onload = function(){
+
+        setInterval(function addc(){
+          counterView.counter+=1}, 1000);
+      }
+    </script>
+  </body>
+</html>

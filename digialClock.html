@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="kr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset=
+    "utf-8"></script>
+
+  </head>
+  <body>
+    <div id="clock">
+      {{year}}년&nbsp;{{mon}}월&nbsp;{{day}}일&nbsp;&nbsp;{{hour}}:{{min}}:{{sec}}
+    </div>
+    <script type="text/javascript">
+      const digiclock = new Vue({
+        el:"#clock",
+        data:{
+          sec:59,
+          min:59,
+          hour:23,
+          day:29,
+          mon:10,
+          year:22,
+        }
+
+      });
+      window.onload = function(){
+        setInterval(function seco(){
+        const date = new Date();
+        digiclock.hour = date.getHours();
+        if(date.getMinutes()<10){
+          digiclock.min="0"+date.getMinutes();
+        }else{
+        digiclock.min = "0"+date.getMinutes();
+        }
+        digiclock.sec = date.getSeconds();
+          if(date.getDay()+16==32){
+            digiclock.day = date.getDay();
+        }else{
+          digiclock.day = date.getDay()+16;
+        }
+          if(date.getMonth()+1==13){
+            digiclock.mon = date.getMonth();
+        }else{
+          digiclock.mon = date.getMonth()+1;
+        }
+        digiclock.year = date.getYear()+1900;
+        },1000);
+      }
+
+    </script>
+  </body>
+</html>

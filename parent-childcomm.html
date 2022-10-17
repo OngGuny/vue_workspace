@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="utf-8" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset=
+    "utf-8"></script>
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <child-component v-bind:propsdata="message"></child-component>
+      <script type="text/javascript">
+        //하위 전역 컴포넌트 생성
+        // 상위 컴포넌트의 데이터를 수신할 프라퍼티를 정의(props)
+        Vue.component("child-component",{// 포함되는 하위 vue
+          props:['propsdata'],
+          template:"<p>{{propsdata}}</p>"
+        });
+        //상위 컴포넌트 생성, Vue 는 최상위 컴포넌트이다. 
+        new Vue({ //포함하는 상위 vue
+          el:"#app",
+          data:{
+            message:"Hello Vue!!!!!!!!!!!!!!!!!!!!!!!!"
+          }
+        })
+
+      </script>
+
+
+    </div>
+  </body>
+</html>

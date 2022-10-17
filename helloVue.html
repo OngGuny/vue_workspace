@@ -9,17 +9,21 @@
   </head>
   <body>
 <div id="app">
+  <!--
+   data 객체의 프라퍼티(속성)을 바인딩하는 템플릿
+   data 개게의 프라퍼티 값이 변경되면 View도 변경됨(바인딩)
+ -->
 {{message}}&nbsp;{{who}}
 </div>
 <script>
-  new Vue({//인스턴스 Vue 객체 생성
-    el:'#app', //여기에 바인딩 시키겠다는것.
-    data:{
+  new Vue({//인스턴스 Vue 객체 생성 / 생성자의 인자로 뷰모델 객체를 넣어
+    el:'#app', //여기에 바인딩 시키겠다는것. /View가 되는 DOM Element
+    data:{//Model이 되는 data 객체
       message:"Hi, Vue.js!",
       who:"Vue.js!"
     }
   });
 </script>
-  
+
   </body>
 </html>

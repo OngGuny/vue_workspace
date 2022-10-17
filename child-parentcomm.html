@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="kr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset=
+    "utf-8"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- show-log라는 이벤트 발생시 printText 호출 -->
+      <child-component v-on:show-log="printText"></child-component>
+    </div>
+    <script type="text/javascript">
+      /*하위 전역 컴포넌트 정의
+      v-on : vue 에서 이벤트처리를 위한 이벤트 수신속성
+      v-on: [이벤트]="이벤트핸들러"
+      */
+    Vue.component("child-component",{
+      template:"<button v-on:click='showLog'>show</button>",//von이벤트핸들러
+      methods:{
+        //$emit 으로 사용자정의 이벤트를 발생시킴
+        showLog:function(){
+          this.$emit("show.log");//이벤트("이벤트명")를 발생함
+        }
+      }
+    });
+    //상위 뷰 컴포넌트 생성
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"Hello Neo"
+      },
+      methods:{
+        printText:function(){
+          console.log("안되니까 다시해 샛꺄")
+        }
+      }
+    });
+
+
+
+
+
+
+
+    </script>
+
+
+  </body>
+
+</html>
