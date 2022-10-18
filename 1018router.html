@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="kr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 기기의 화면을 1배율로 꽉 채운다는 것 픽셀기준으로 만들 순 없으니. 밑에 스크립트 순서다르면 오류뜸 ㅅㅂ-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset="utf-8"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+
+  </head>
+  <body>
+    <div id="app">
+      <router-link to="/main">메인컴포넌트</router-link>
+      <router-link to="/login">로그인컴포넌트</router-link>
+      <router-view></router-view>
+      <br />
+    </div>
+    <script type="text/javascript">//여기다 템플릿 정의
+      //템플릿 객체
+      const Main = {template:"<div>main</div>"};
+      const Login = {template:"<div>login</div>"};
+      //라우터 객체 배열 (path, component)
+      const routes = [
+      {path:"/main",component:Main},
+      {path:"/login",component:Login}
+      ];
+      //vue 라우터(생성자의 인자로 라우터 객체 배열을 넣어준다.)
+      let router = new VueRouter({
+        // mode:'history',
+        routes
+      });
+      //vue
+      let app = new Vue({
+        router
+      }).$mount("#app");//mount 하고 마운트 할 엘리먼트를 담아준다.
+
+    </script>
+  </body>
+</html>

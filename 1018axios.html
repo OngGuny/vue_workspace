@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <button v-on:click="getData">가져오기</button><!-- 괄호를 붙이면 호출 결과를. 괄호안치면 메소드를 실행한다는 것.-->
+    </div>
+<script type="text/javascript">
+  new Vue({
+    el:"#app",
+    methods:{
+      getData:function(){ //이거 쓰면 어디있든지 json 다 가져올수있음;
+        axios.get("https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json")
+        .then(function(response){ console.log(response)});
+      }
+    }
+  });
+</script>
+
+  </body>
+</html>

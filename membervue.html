@@ -1,0 +1,82 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset=
+    "utf-8"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+<div id="app">
+	<member-info></member-info>
+</div>
+
+
+<script>
+const getMemberInfo = () => {
+	let join = new MemberJoinDAOImpl();
+  mserv.joinMember();
+}
+
+
+const members = new Vue({
+	el:"#app",
+	template:`
+		<div>
+      <form method="post" name = "frm" action="jsp/memberjoinproc.jsp">
+        <input type="text" id="newid"></input>
+        <input type="text" id="newname"></input>
+        <input type="text" id="newemail"></input>
+        <button type="submit">가입하기</button>
+      </form>
+		----------------------------------------------------------------------
+	<p>	아이디&nbsp;&nbsp;  |&nbsp; &nbsp; 성명&nbsp;&nbsp;  |&nbsp;&nbsp;&nbsp;&nbsp;  	이메일&nbsp;&nbsp;&nbsp;&nbsp; 	 |  &nbsp;&nbsp;가입일시&nbsp;&nbsp;  |&nbsp;&nbsp; 정보보기  &nbsp;&nbsp;|</p>
+	   ----------------------------------------------------------------------
+    <ul>
+    	<!-- <il v-for="mem in members">{{mem.id}}&nbsp;{{mem}}</il>-->
+    </ul>
+  </div>
+    `
+	,
+	data(){
+		return{
+			member:{
+        id:'',
+        name:'',
+        email:''
+      }
+		}
+	},
+  methods:{
+  memberJoin(){
+    console.log(this.member);
+    console.log(this.member.name);
+    let info = {
+      newid:this.member.id,
+      newname:this.member.name,
+      newemail:this.member.email
+    };
+    console.log(info.newid);
+    href.location=""
+  },
+  joinProc(){
+    axios.get("C:\eclipse_workspace\1018VueMember\src\main\webapp\jsp\memberwriteproc.jsp")
+    .then(function(response){console.log(response)});
+  },
+  getmemberlist(){
+    axios.get("C:\eclipse_workspace\VueMember\src\main\webapp\jsp\memberlistproc.jsp")
+    .then(function(response){console.log(response)});
+    }
+}
+  }
+});
+
+</script>
+
+</body>
+</html>
