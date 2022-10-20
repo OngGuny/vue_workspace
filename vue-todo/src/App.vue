@@ -50,6 +50,22 @@ this.todoList();
 
   methods: {
     addTodo(todo, time) {
+      /*
+      동적 데이터 처리
+      impl 에서 아이디 가져오는 메소드 만들어줌./
+      아래 axios 에서 리스폰스 담아올때 아이디도 같이 받아옴
+      여기에 새로운 지역변수 생성해줌
+      let todo = todoitemids;
+      여기에 새로 만든 글의 아이디를 담아줌. push로
+
+
+      listTodo 에서도 담아줌
+      협업해서 만든거에선 listTodo에서도 새로운 let 선언해서
+      itemids 담아줌
+
+      이렇게하면  일정 새로 만들고
+      새로고침 안해도 바로 지우기가 가능해짐 
+      */
       console.log(typeof todo + "Emldnrk" + todo);
       console.log(typeof time + "DWDWD" + time);
       axios.get("http://localhost:9999/Todo_1019Task/jsp/writeProc.jsp?todo=" + todo + "&time=" + time, {
