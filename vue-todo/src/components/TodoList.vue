@@ -4,7 +4,7 @@
     <li v-for="(todoItem,index) in propsdata" :key="todoItem" class="shadow">
       <i class="checkBtn fas fa-check" aria-hidden="true"></i>
       {{todoItem}}
-      <span class="removeBtn" type="button" @click="removeTodo(todoItem,index)">
+      <span class="removeBtn" type="button" @click="removeTodo(todoItem,index,propsid[index])">
         <i class="far fa-trash-alt" aria-hidden="true"></i>
       </span>
     </li>
@@ -32,10 +32,11 @@ export default {
   //   }//if
   // },
   //상위컴포넌트에게 데이터 넘겨주려면 에밋으로 이벤트 발생시키면서 값을 넘긴다는것.  리무브 투두 이벤트발생+데이터전달
-  props: ['propsdata'],
+  props: ['propsdata','propsid'],
   methods: {
-    removeTodo(todoItem, index) {
-      this.$emit("removeTodo", todoItem, index);
+    removeTodo(todoItem, index ,todoItemids) {
+      console.log(todoItemids)
+      this.$emit("removeTodo", todoItem,index, todoItemids);
       // localStorage.removeItem(todoItem);
       // this.todoItems.splice(index,1);
     }
