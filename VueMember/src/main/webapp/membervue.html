@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"
+	charset="utf-8"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+
+</head>
+<body>
+	<div id="app">
+		<div>
+			<form method="get" name="frm" action="jsp/memberjoinproc.jsp">
+				ID:<input type="text" name="newid" maxlength="8"></input><br />
+				Name:<input type="text" name="newname" maxlength="3"></input><br />
+				Email:<input type="text" name="newemail" maxlength="20"></input><br />
+				<button type="submit">가입하기</button>
+			</form>
+			<button v-on:click='getmemberlist'>목록 보기</button>
+
+			<ul>
+				<li>----------------------------------------------------------------------</li>
+				<li>아이디&nbsp;&nbsp; |&nbsp; &nbsp; 성명&nbsp;&nbsp;
+					|&nbsp;&nbsp;&nbsp;&nbsp; 이메일&nbsp;&nbsp;&nbsp;&nbsp; |
+					&nbsp;&nbsp;가입일시&nbsp;&nbsp; |&nbsp;&nbsp; 정보보기 &nbsp;&nbsp;|</li>
+				<li>----------------------------------------------------------------------</li>
+				<li v-for="mem in members">{{mem.id}}|__|{{mem.name}}|__|{{mem.email}}|_|{{mem.joindate}}
+					<div id="detail"></div>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+
+	<script>
+	const main = new Vue({
+			el : "#app",
+			data:{
+				members:[]
+			},
+			methods : {
+				getmemberlist : function() {
+					axios.get("jsp/memberlistproc.jsp").then((response)=>{
+							main.members=response.data;
+							})				
+				}
+			}
+		});
+	
+	const le = function(){
+	 	let Detail = {template:"<div>{{mem.id}}|/|{{mem.name}}|\|{{mem.email}}|/|{{mem.joindate}}</div>"}
+	 	let route = {path:"/detail",component:Detail};
+	 	let router = new VueRouter({route});
+	 	let info = new Vue({router}).$mount("#detail");
+		}
+	
+ 	</script>
+
+
+</body>
+</html>
